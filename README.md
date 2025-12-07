@@ -1,232 +1,330 @@
-# MIRCF
-MIRCF
+📘 MIRCF Interactive Dashboard
+Meta-Intentional Reflexive Cybernetic Framework — Classical, Multi-Agent & Quantum Simulation Environment
 
-Dashboard: complete features & quick instructions
-1) High-level features (what the notebook gives you)
+This repository contains an interactive Jupyter-based dashboard implementing the Meta-Intentional Reflexive Cybernetic Framework (MIRCF), including:
 
-Interactive multi-agent MIRCF simulation (classical):
+Classical recursive MIRCF dynamics
 
-N agents evolving under the unified MIRCF update.
+Multi-agent distributed MIRCF
 
-Several adjacency modes (ring, Erdős–Rényi, random regular, fully connected, ramanujan_bipartite).
+Ramanujan-inspired regularization of divergent recursions
 
-Per-agent RSI (Reflexive Stability Index) and per-agent EDB (Entropy Drift Bound).
+Reflexive Stability Index (RSI)
 
-Enhanced visualization panels:
+Entropy Drift Bound (EDB)
 
-Agent state trajectories (select/highlight agents).
+Resonance Metrics (spectral-gap / expander analysis)
 
-RSI heatmap (time × agent).
+Quantum density-matrix simulation mapped from selected classical agents
 
-EDB (entropy) heatmap (time × agent).
+Full interactive visualization toolkit (heatmaps, trajectories, Lyapunov diagnostics, adjacency graphs)
 
-Lyapunov candidate / stability diagnostic with spectral gap line.
+This environment supports experiments used in Paper 0: “Meta-Intentional Reflexive Cybernetic Framework (MIRCF): A Mathematical Model for Sustainable and Self-Regulating Digital Intelligence.”
 
-Final value distributions (state and RSI).
+🚀 Features
+✔ 1. Multi-Agent MIRCF Simulation
 
-Adjacency graph or matrix view (uses networkx if installed).
+N agents evolving under the unified MIRCF equation:
 
-Quantum extension (agent-specific):
+recursive terms (a, b)
 
-Map selected classical agent → 2×2 density matrix (Bloch vector).
+Abel–Ramanujan regularization (ε)
 
-Time evolution of quantum state via simple toy CPTP steps (rotation + depolarization + dephasing).
+RSI corrective term (K_RSI)
 
-Plots: purity, von Neumann entropy, Bloch components, linked RSI vs quantum purity.
+EDB entropy corrective term (K_EDB)
 
-Saveable runtime state (the simulation stores LAST_SIM in notebook memory for follow-up analysis or scripting).
+coupling term γ with adjacency A
 
-Lightweight and fast for typical sizes (N ≤ 200, T ≤ few hundred).
+Multiple graph topologies:
 
-2) Controls / Widgets — what each does
+Ring lattice
 
-Row 1
+Erdős–Rényi random graph
 
-N — number of agents (default 24).
+Random regular graph
 
-T — number of timesteps to simulate (default 300).
+Fully connected network
 
-graph (dropdown) — adjacency mode:
+Ramanujan-like bipartite expander (approximate)
 
-ring — nearest-neighbour ring (low expansion).
+✔ 2. Visualization Layer
 
-erdos_renyi — random graph with parameter p.
+Automatically generated after each simulation:
 
-random_regular — each node has degree d (attempts networkx then fallback).
-
-fully_connected — dense coupling (complete graph).
-
-ramanujan_bipartite — approximate Ramanujan-like bipartite expander generator.
-
-degree d — used by random_regular and ramanujan_bipartite (how many neighbors).
-
-p (ER) — edge probability used when erdos_renyi chosen.
-
-Row 2
-
-a — primary recursion coefficient (multiplies x_t).
-
-b — secondary recursion coefficient (multiplies x_{t-1}).
-
-eps — Abel / Ramanujan regularization strength (small positive smooths/diverges).
-
-gamma — multi-agent coupling strength (how strongly agents pull toward neighbors).
-
-Row 3
-
-K_RSI — strength of RSI-based corrective term.
-
-K_EDB — strength of EDB (entropy) corrective term.
-
-Plot adjacency checkbox — toggle adjacency visualization.
-
-Run simulation — run the classical multi-agent MIRCF simulation.
-
-Row 4 (quantum & highlight)
-
-Highlight agents — select multiple agents to overlay their time series on the state plot.
-
-Quantum agent — pick a single agent to launch a toy quantum sim for after the classical run.
-
-Run quantum sim for selected agent — run the quantum density simulation for the chosen agent.
-
-3) Plots & what they mean (how to interpret)
-
-Agent state trajectories (mean + highlighted agents)
-
-Shows global mean and selected agent trajectories. Look for convergence, oscillation, or runaway divergence. Convergence → MIRCF stabilizing.
+Agent state trajectories (with agent highlighting)
 
 RSI heatmap (time × agent)
 
-RSI ∈ [0,1] in the notebook: higher RSI indicates stronger reflexive coherence/stability for that agent at that time. Patches of low RSI show instability pockets.
+EDB entropy heatmap (time × agent)
 
-EDB heatmap (time × agent)
+Lyapunov-like stability curve + spectral-gap overlay
 
-Higher EDB means higher entropy / uncertainty for that agent. Watch EDB collapse as evidence of MIRCF reducing uncertainty.
+Final-state histograms
 
-Lyapunov candidate V(t)
+Graph adjacency visualization (matrix or networkx layout)
 
-Aggregate diagnostic combining variance and RSI penalties. A downward trend + low oscillation indicates improved stability. The spectral gap (RM) is overlaid as a red dashed line — larger gap typically means faster stabilization.
+These plots map directly to figures in Paper 0.
 
-Final distributions (histograms)
+✔ 3. Quantum MIRCF Simulation
 
-Compare distribution of final states vs RSI. A tight, centered final state distribution indicates effective regularization.
+For any selected classical agent:
 
-Adjacency graph / matrix
+Classical agent state mapped to a qubit density matrix
 
-Visual inspection of connectivity; helps relate graph structure to spectral gap and dynamics.
+Time evolution under a MIRCF-inspired CPTP channel:
 
-Quantum plots (per selected agent)
+unitary rotation
 
-Purity increases as state becomes more pure (lower mixedness).
+depolarization
 
-von Neumann entropy decreases when the quantum state becomes less uncertain.
+dephasing
 
-Bloch components show how the qubit orbits on the Bloch sphere; compare with classical trajectory.
+entropic corrections
 
-Linked RSI vs purity demonstrates the classical→quantum correspondence: higher RSI tends to correlate with higher purity in the toy model.
+Quantum visualizations include:
 
-4) Step-by-step usage (quick start)
+purity trajectory
 
-Open the notebook mircf_full_notebook.ipynb in Jupyter / JupyterLab.
+von Neumann entropy trajectory
 
-Ensure dependencies installed (see section 6).
+Bloch vector components
 
-Run the single big cell (or split it if you prefer editing). The dashboard interface appears.
+RSI ↔ purity linkage plot
 
-Choose adjacency mode and N and T. Default ramanujan_bipartite is a good place to start.
+This demonstrates MIRCF’s quantum generalization.
 
-Set MIRCF coefficients a, b. Reasonable starting values: a ≈ 1.0–1.2, b ≈ 0.9–1.1.
+✔ 4. Interactive Dashboard Controls
 
-Set regularization eps small (0.01–0.05). Set gamma (coupling) 0.0–0.3 initially.
+All parameters adjustable in real time:
 
-Click Run simulation. Wait — the UI will render the plots (should be fast for default sizes).
+N (agents), T (timesteps)
 
-Inspect RSI & EDB heatmaps and Lyapunov plot. Try adjusting sliders (a, b, eps, gamma) and rerun.
+Graph topology settings (degree, ER-p)
 
-To test quantum mapping: pick a Quantum agent (e.g., 0), then click Run quantum sim for selected agent. The quantum plots appear (linked to the last classical run).
+MIRCF coefficients (a, b, ε, γ, K_RSI, K_EDB)
 
-For reproducible experiments, record the slider values and seed (seed is set internally to 42 in the notebook). Use the same values to reproduce the figure later.
+Agent highlight selector
 
-5) Recommended experiments for Paper 0 (figures / tables you can produce)
+Quantum agent selector
 
-A. Scalar baseline (Figure 1): set N=1, run with/without eps. Plot raw vs regularized trajectory and RSI/EDB.
+Toggle adjacency visualization
 
-B. Spectral gap study (Figure 4): fix N (e.g., 100), compare ring, erdos_renyi, random_regular and ramanujan_bipartite at same average degree. Plot Lyapunov V(t) and record spectral gap Δ — produce a table: Δ vs stabilization time (time to V(t) < threshold).
+"Run simulation" → classical
 
-C. Multi-agent heatmaps (Figures 5–7): N=50–200, show RSI & EDB heatmaps for two parameter regimes (weak coupling vs strong coupling). Highlight emergence of clusters.
+"Run quantum sim" → quantum
 
-D. Expander effect (Figure 8): Create side-by-side runs on ER vs Ramanujan-like expanders; plot final distribution histograms and RSI variances.
+✔ 5. Reproducible Experimental Environment
 
-E. Quantum mapping (Figure 10): For a selected agent, show classical RSI vs quantum purity over time and compute correlation coefficient.
+Fixed RNG seed
 
-F. Parameter sweep: Grid sweep over (eps, gamma) or (a, b) and produce heatmaps of final RSI mean and final EDB mean.
+Internal LAST_SIM object stores the full simulation
 
-G. Ablation: Disable RSI or disable EDB correction to show their contribution to stabilization.
+Can be exported for publication or downstream analysis
 
-6) Installation & environment (dependencies)
+📁 Files Included
+File	Description
+mircf_full_notebook.ipynb	Full dashboard notebook (classical + multi-agent + heatmaps + expander graphs + quantum)
+README.md	Documentation (this file)
+Additional notebooks (optional)	Scalar MIRCF demos, Ablation studies
+🔧 Installation
 
-Preferred: create a clean environment (conda recommended but pip works):
+Recommended: conda environment
 
-Conda example:
-
-conda create -n mircf python=3.10 numpy scipy matplotlib ipywidgets networkx notebook
+conda create -n mircf python=3.10
 conda activate mircf
-jupyter lab
+conda install numpy scipy matplotlib networkx ipywidgets notebook
 
 
-Pip example:
-
-python -m venv mircfenv
-source mircfenv/bin/activate
-pip install --upgrade pip
-pip install numpy scipy matplotlib ipywidgets networkx notebook
-jupyter notebook
-
-
-Optional (for nicer quantum tools): qutip (not required for the toy quantum in the notebook).
-If using JupyterLab, enable ipywidgets extension if necessary:
+Enable widgets if needed:
 
 jupyter nbextension enable --py widgetsnbextension
 
 
-(Recent JupyterLab versions often work out of the box.)
+Run the dashboard:
 
-Note about PyQt5: you do not need PyQt5 to run the notebook. PyQt5 is only required if you later want a standalone PyQt desktop dashboard. You previously saw a PyQt crash — if you build a desktop dashboard later I can include safe install and Mac M1 tips.
+jupyter notebook
 
-7) Saving results & reproducibility
 
-The notebook stores the last simulation object in LAST_SIM. From another code cell you can save:
+Then open mircf_full_notebook.ipynb.
+
+Optional: Quantum enhancement (not required for default)
+
+Install QuTiP (if available in your environment):
+
+pip install qutip
+
+
+The notebook gracefully falls back to numpy-only quantum simulation.
+
+🧭 Usage Instructions
+1. Launch the notebook
+
+Open:
+mircf_full_notebook.ipynb
+
+Run the main cell — the dashboard UI will appear.
+
+2. Configure the classical simulation
+
+Select:
+
+Agent count N
+
+Timesteps T
+
+Graph topology (ring, erdos_renyi, random_regular, ramanujan_bipartite, etc.)
+
+Recursion coefficients (a, b)
+
+Regularization ε
+
+Coupling γ
+
+Correction parameters (K_RSI, K_EDB)
+
+When ready → click Run simulation.
+
+3. Inspect the plots
+
+You will see:
+
+Mean trajectory + highlighted agents
+
+RSI & entropy heatmaps
+
+Lyapunov diagnostic with graph spectral gap
+
+Final state distribution
+
+Optional adjacency graph
+
+These directly correspond to MIRCF stability metrics.
+
+4. Run the quantum extension
+
+Choose a Quantum agent → click Run quantum sim.
+
+You will see:
+
+Purity over time
+
+Von Neumann entropy
+
+Bloch vector components
+
+Correlation between RSI and purity
+
+5. Export results
+
+Inside a code cell:
 
 import numpy as np
-np.savez("mircf_sim_N24_T300.npz", **LAST_SIM)
+np.savez("mircf_sim_export.npz", **LAST_SIM)
 
 
-Save figures as publication-quality PNG/PDF:
+Save any figure:
 
-fig.savefig("mircf_rsi_heatmap.png", dpi=300, bbox_inches='tight')
+fig.savefig("rsi_heatmap.png", dpi=300)
 
+🔬 Recommended Experiments (for Paper 0)
 
-If you want to export a reproducible script, I can refactor the big cell into numbered cells or into a standalone .py that accepts CLI args and writes full experiment outputs.
+Use this dashboard to generate:
 
-8) Performance notes & limits
+1. Scalar MIRCF baseline
 
-Typical runtime (default N=24, T=300) — < 1s on modern laptop.
+Internal reflexive stabilization without coupling.
 
-Larger N and T increase cost: eigenvalue computations for spectral gap scale as O(N^3) if done naïvely. For N > 500, reduce T or compute approximate spectral gap (via sparse methods).
+2. Spectral gap vs stability
 
-The notebook is intentionally single-process and CPU-based. If you want GPU acceleration for very large experiments we can refactor to use PyTorch for large vectorized runs.
+Show that Ramanujan-like expanders outperform ER/ring networks.
 
-9) Troubleshooting & tips
+3. RSI & EDB temporal landscapes
 
-No interactive widgets appear: ensure ipywidgets installed and enabled. In notebooks run the widget cell then jupyter nbextension enable --py widgetsnbextension or use JupyterLab extension if needed.
+Produce heatmaps to demonstrate reflective coherence formation.
 
-Adjacency graph blank or slow: if N is large, networkx layout is slow. Disable adjacency plotting or set N smaller when you want network layout.
+4. Quantum–classical linkage
 
-Quantum sim says no classical sim: run Run simulation first (LAST_SIM must exist).
+Plot RSI vs quantum purity.
 
-Different random seeds: the notebook uses a fixed rng seed for reproducibility; change if you want different draws.
+5. Ablation experiments
 
-PyQt crash from earlier: ignore unless you plan to use PyQt dashboard (we can build a robust PyQt version that avoids common macOS pitfalls).
+Disable RSI or EDB to show their necessity.
+
+6. Parameter sweeps
+
+Generate 2D heatmaps of stabilization success across parameters.
+
+🧩 Architecture Overview
+MIRCF Core (recursion + regularization)
+│
+├── Multi-Agent Layer (N agents, adjacency A)
+│   ├─ RSI
+│   ├─ EDB
+│   ├─ RM (spectral gap)
+│   └─ Coupling dynamics
+│
+├── Visualization Layer
+│   ├─ Heatmaps
+│   ├─ Trajectories
+│   ├─ Lyapunov diagnostics
+│   └─ Graph visualization
+│
+└── Quantum Layer (optional)
+    ├─ density matrix ρ_t
+    ├─ purity & entropy
+    └─ Bloch dynamics
+
+🛠 Troubleshooting
+Widgets not appearing?
+
+Run:
+
+pip install ipywidgets
+jupyter nbextension enable --py widgetsnbextension
+
+Adjacency graph crashes for large N
+
+Disable "Plot adjacency" or reduce N.
+
+Quantum sim not running
+
+You must run Run simulation first.
+
+Performance slow?
+
+Lower timesteps T or agent count N.
+Spectral gap computation is O(N³); consider disabling it for N > 300.
+
+📄 Citation (for academic usage)
+
+If you use this dashboard in research, cite:
+
+Siddarth L., 2025.
+Meta-Intentional Reflexive Cybernetic Framework (MIRCF):
+A Mathematical Model for Sustainable and Self-Regulating Digital Intelligence.
+Working Paper / Preprint.
+
+🤝 Contributing
+
+Pull requests welcome!
+
+Enhancements especially desired:
+
+GPU/parallel batching of MIRCF runs
+
+Efficient spectral-gap approximation
+
+More accurate Ramanujan expander generator
+
+Higher-dimensional quantum MIRCF (qutrits or multi-qubit systems)
+
+📬 Support
+
+If you want help with:
+
+Creating a PyQt desktop version
+
+Exporting publication-quality figure sets
 
 Matplotlib rendering in JupyterLab: if plots don’t appear, ensure %matplotlib inline or %matplotlib widget (widget backend needs ipympl). Default inline is used; interactive will redraw properly.
