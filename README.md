@@ -1,71 +1,125 @@
-📘 MIRCF Interactive Dashboard
-Meta-Intentional Reflexive Cybernetic Framework — Classical, Multi-Agent & Quantum Simulation Environment
+📘 MIRCF Interactive Dashboard — README.md
+Meta-Intentional Reflexive Cybernetic Framework (MIRCF)
+Multi-Agent Simulator + Ramanujan Expanders + Quantum Density Evolution
 
-This repository contains an interactive Jupyter-based dashboard implementing the Meta-Intentional Reflexive Cybernetic Framework (MIRCF), including:
+This repository contains an interactive Jupyter Notebook implementing the full MIRCF dashboard, including:
 
-Classical recursive MIRCF dynamics
+1.Multi-agent MIRCF recursion
 
-Multi-agent distributed MIRCF
+2.Abel/Ramanujan regularization
 
-Ramanujan-inspired regularization of divergent recursions
+3.Reflexive Stability Index (RSI)
 
-Reflexive Stability Index (RSI)
+4.Entropy Drift Bound (EDB)
 
-Entropy Drift Bound (EDB)
+5.Ramanujan-like bipartite expander graphs
 
-Resonance Metrics (spectral-gap / expander analysis)
+6.Per-agent entropy + RSI heatmaps
 
-Quantum density-matrix simulation mapped from selected classical agents
+7.Agent highlighting & comparisons
 
-Full interactive visualization toolkit (heatmaps, trajectories, Lyapunov diagnostics, adjacency graphs)
+8.Spectral gap diagnostics (Resonance Metrics)
 
-This environment supports experiments used in Paper 0: “Meta-Intentional Reflexive Cybernetic Framework (MIRCF): A Mathematical Model for Sustainable and Self-Regulating Digital Intelligence.”
+9.Quantum density-matrix simulation linked to classical agent states
 
-🚀 Features
+This dashboard serves as an experimental cockpit for Paper 0 and subsequent MIRCF publications.
 
-✔ 1. Multi-Agent MIRCF Simulation
+🔧 1. Features Overview
 
-N agents evolving under the unified MIRCF equation:
+✅ Classical MIRCF Layer
 
-recursive terms (a, b)
+Multi-agent MIRCF recursive update
 
-Abel–Ramanujan regularization (ε)
+Regularization via Abel/Ramanujan smoothing
 
-RSI corrective term (K_RSI)
+Per-agent RSI and EDB computation
 
-EDB entropy corrective term (K_EDB)
+Adjustable:
 
-coupling term γ with adjacency A
+recursion parameters a, b
 
-Multiple graph topologies:
+regularization eps
 
-Ring lattice
+coupling gamma
 
-Erdős–Rényi random graph
+entropy & stability strengths K_RSI, K_EDB
 
-Random regular graph
+✅ Network / Graph Layer
 
-Fully connected network
+Selectable graph models:
 
-Ramanujan-like bipartite expander (approximate)
+ring
 
+erdos_renyi
 
-✔ 2. Visualization Layer
+random_regular
 
+fully_connected
 
-Automatically generated after each simulation:
+ramanujan_bipartite (approximate Ramanujan expander generator)
 
-Agent state trajectories (with agent highlighting)
+Visual adjacency matrix and optional graph drawing
+
+Automatic spectral-gap calculation (Resonance Metric RM)
+
+✅ Visualization Layer
+
+Agent trajectory plot (with highlight)
 
 RSI heatmap (time × agent)
 
 EDB entropy heatmap (time × agent)
 
-Lyapunov-like stability curve + spectral-gap overlay
+Lyapunov-like stability monitor + spectral gap overlay
 
-Final-state histograms
+Final distribution histograms
 
-Graph adjacency visualization (matrix or networkx layout)
+Adjacency visualization (matrix or full graph if networkx installed)
+
+✅ Quantum MIRCF Layer
+
+Choose any agent to map into a quantum state
+
+Construct a 2×2 density matrix from the agent’s classical state
+
+CPTP evolution influenced by classical MIRCF values
+
+Plots:
+
+quantum purity
+
+von Neumann entropy
+
+Bloch-vector components
+
+RSI ↔ purity mapping (classical ↔ quantum correspondence)
+
+
+🖥 2. Controls & Widgets
+
+Simulation Controls
+
+| Control          | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `N`              | Number of agents                            |
+| `T`              | Number of timesteps                         |
+| `graph`          | Adjacency generator mode                    |
+| `degree d`       | Graph degree (used in regular + expander)   |
+| `p (ER)`         | Edge probability (Erdős–Rényi)              |
+| `a`, `b`         | Recursion coefficients                      |
+| `eps`            | Abel/Ramanujan regularization strength      |
+| `gamma`          | Inter-agent coupling strength               |
+| `K_RSI`, `K_EDB` | Strength of stability & entropy corrections |
+| `Plot adjacency` | Toggle between adjacency matrix/graph       |
+| `Run simulation` | Execute classical MIRCF                     |
+
+Quantum Controls
+
+| Control            | Description                             |
+| ------------------ | --------------------------------------- |
+| `Highlight agents` | Plot chosen agents over the global mean |
+| `Quantum agent`    | Select agent to quantize                |
+| `Run quantum sim`  | Executes density evolution              |
 
 
 
@@ -99,26 +153,40 @@ RSI ↔ purity linkage plot
 This demonstrates MIRCF’s quantum generalization.
 
 
-✔ 4. Interactive Dashboard Controls
+📊 4. Interpretation of Outputs
 
 
-All parameters adjustable in real time:
+State Trajectories
 
-N (agents), T (timesteps)
+Shows stabilization, oscillation, divergence, or clustering.
 
-Graph topology settings (degree, ER-p)
+RSI Heatmap
 
-MIRCF coefficients (a, b, ε, γ, K_RSI, K_EDB)
+High RSI → high reflexive coherence.
+Low RSI → instability or unresolved recursion.
 
-Agent highlight selector
+EDB Heatmap
 
-Quantum agent selector
+Measures uncertainty / entropy drift across agents.
 
-Toggle adjacency visualization
+Lyapunov Diagnostic
 
-"Run simulation" → classical
+Downward trend indicates stability gain.
+Overlaid spectral gap shows RM → stability correlation.
 
-"Run quantum sim" → quantum
+Final State Distributions
+
+Assess convergence and regularization quality.
+
+Quantum Outputs
+
+Purity ↑ → agent internally stabilizing
+
+Entropy ↓ → uncertainty reduction
+
+Bloch vector → trajectory on quantum sphere
+
+RSI vs Purity → classical→quantum reflexive link
 
 
 ✔ 5. Reproducible Experimental Environment
