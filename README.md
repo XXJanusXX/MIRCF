@@ -22,6 +22,7 @@ Full interactive visualization toolkit (heatmaps, trajectories, Lyapunov diagnos
 This environment supports experiments used in Paper 0: “Meta-Intentional Reflexive Cybernetic Framework (MIRCF): A Mathematical Model for Sustainable and Self-Regulating Digital Intelligence.”
 
 🚀 Features
+
 ✔ 1. Multi-Agent MIRCF Simulation
 
 N agents evolving under the unified MIRCF equation:
@@ -48,7 +49,9 @@ Fully connected network
 
 Ramanujan-like bipartite expander (approximate)
 
+
 ✔ 2. Visualization Layer
+
 
 Automatically generated after each simulation:
 
@@ -64,9 +67,10 @@ Final-state histograms
 
 Graph adjacency visualization (matrix or networkx layout)
 
-These plots map directly to figures in Paper 0.
+
 
 ✔ 3. Quantum MIRCF Simulation
+
 
 For any selected classical agent:
 
@@ -94,7 +98,9 @@ RSI ↔ purity linkage plot
 
 This demonstrates MIRCF’s quantum generalization.
 
+
 ✔ 4. Interactive Dashboard Controls
+
 
 All parameters adjustable in real time:
 
@@ -114,7 +120,9 @@ Toggle adjacency visualization
 
 "Run quantum sim" → quantum
 
+
 ✔ 5. Reproducible Experimental Environment
+
 
 Fixed RNG seed
 
@@ -122,11 +130,7 @@ Internal LAST_SIM object stores the full simulation
 
 Can be exported for publication or downstream analysis
 
-📁 Files Included
-File	Description
-mircf_full_notebook.ipynb	Full dashboard notebook (classical + multi-agent + heatmaps + expander graphs + quantum)
-README.md	Documentation (this file)
-Additional notebooks (optional)	Scalar MIRCF demos, Ablation studies
+
 🔧 Installation
 
 Recommended: conda environment
@@ -158,6 +162,7 @@ pip install qutip
 The notebook gracefully falls back to numpy-only quantum simulation.
 
 🧭 Usage Instructions
+
 1. Launch the notebook
 
 Open:
@@ -298,6 +303,7 @@ Spectral gap computation is O(N³); consider disabling it for N > 300.
 
 📄 Citation (for academic usage)
 
+
 If you use this dashboard in research, cite:
 
 Siddarth L., 2025.
@@ -318,13 +324,5 @@ Efficient spectral-gap approximation
 More accurate Ramanujan expander generator
 
 Higher-dimensional quantum MIRCF (qutrits or multi-qubit systems)
-
-📬 Support
-
-If you want help with:
-
-Creating a PyQt desktop version
-
-Exporting publication-quality figure sets
 
 Matplotlib rendering in JupyterLab: if plots don’t appear, ensure %matplotlib inline or %matplotlib widget (widget backend needs ipympl). Default inline is used; interactive will redraw properly.
