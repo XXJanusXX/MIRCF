@@ -42,59 +42,58 @@ MIRCF/
     ├── RELEASE_CHECKLIST.md
     └── metadata.json
 ```
-# MIRCF — Meta-Intentional Reflexive Cybernetic Framework
+# Meta-Intentional Reflexive Cybernetic Framework (MIRCF)
 
-This repository is the official open research artifact accompanying the MIRCF study.
-It provides a fully reproducible implementation of the experimental results
-reported in Section 6 (RQ1–RQ6).
+[![CI](https://github.com/XXJanusXX/MIRCF/actions/workflows/ci.yml/badge.svg)](https://github.com/XXJanusXX/MIRCF/actions)
 
-The artifact follows Design Science Research (DSR) best practices and includes
-continuous integration to validate reproducibility.
+This repository provides the **official, reproducible research artifact** for the paper:
 
----
+**Meta-Intentional Reflexive Cybernetic Framework (MIRCF)**
 
-## Contents
+The artifact reproduces all empirical results reported in **Section 6** of the paper, including:
+- Figures 6.1–6.9
+- All ablation and counterfactual experiments
+- Classical and quantum-inspired extensions
+- Programmatic table figures
+- Deterministic checksums for verification
 
-- Reproducible Jupyter notebook for RQ1–RQ6
-- Programmatic generation of all figures and tables (SVG + JPG)
-- Quantum-inspired extension (RQ5)
-- Counterfactual safety analysis (RQ6)
-- Continuous Integration (CI) for notebook execution
+The repository is designed to meet **journal, reviewer, and archival (Zenodo) standards**.
 
 ---
 
-## Quick Start
+## License
 
-```
+This project is released under the  
+**Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+
+- ✅ Academic and research use permitted  
+- ❌ Commercial use prohibited  
+
+See `LICENSE` for full terms.
+
+---
+
+## Citation
+
+If you use this work, please cite it using the provided `CITATION.cff`.
+
+**Author:** Siddarth Laxminarayanan  
+**ORCID:** 0009-0000-4065-3370  
+**Affiliation:** Research Scholar, Rushford Business School, Switzerland
+
+---
+
+## Quick Start (Reproducibility)
+
+### Requirements
+- Python **3.12.12**
+- Linux / macOS / Windows
+- No GPU required
+
+### Setup
+```bash
+git clone https://github.com/XXJanusXX/MIRCF.git
+cd MIRCF
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-
-Open and run:
-
-notebooks/MIRCF_Section6_Reproduction.ipynb
-
-All figures and tables will be regenerated in the outputs/ directory.
-
-Reproducibility Guarantee
-
-Deterministic seeds used throughout
-
-No external data dependencies
-
-All figures and tables generated programmatically
-
-Notebook execution validated on every commit via GitHub Actions
-
-Author Contribution Statement
-
-Siddarth L. conceived and designed the Meta-Intentional Reflexive Cybernetic Framework (MIRCF). The author developed the theoretical framework, formulated the research questions, and defined the intrinsic stability, reflexive coherence, entropy regulation, resonance, scalability, and safety metrics used in the study.
-
-The author implemented the complete computational models, simulation environment, and quantum-inspired extension, and conducted all experiments reported in the manuscript. All empirical analyses, ablation studies, scalability evaluations, counterfactual safety tests, and figure and table generation were performed by the author.
-
-The author wrote the manuscript, including the conceptual framework, methodology, results, discussion, and conclusions, and prepared all figures, tables, and supplementary materials. The author also designed, implemented, and validated the full reproducibility artifact, including the deterministic Jupyter notebook, continuous integration workflow, and open research metadata.
-
-The author approved the final version of the manuscript and is solely responsible for the integrity, accuracy, and reproducibility of the work.
-
-
-License
-
-MIT License. See LICENSE.
