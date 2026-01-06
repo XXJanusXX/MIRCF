@@ -19,28 +19,43 @@ jobs:
         with:
           python-version: "3.12.12"
 
-      - name: Install dependencies
+      - name: Upgrade pip
         run: |
           python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
-          pip install jupyter nbconvert
+          pip install jupyter nbconvert nbformat
 
       - name: Prepare output directory
         run: |
           mkdir -p outputs
 
+      # -------------------------------
+      # Execute notebook (CRITICAL FIX)
+      # -------------------------------
       - name: Execute MIRCF notebook
         run: |
           jupyter nbconvert \
             --to notebook \
             --execute notebooks/MIRCF_Section6_Reproduction.ipynb \
-            --output notebooks/executed.ipynb
+            --output executed.ipynb
 
-      - name: Verify outputs exist
+      # nbconvert writes relative to input notebook directory
+      - name: Verify executed notebook exists
+        run: |
+          test -f notebooks/executed.ipynb || \
+            (echo "ERROR: executed notebook missing" && exit 1)
+
+      - name: Verify outputs directory populated
         run: |
           test -d outputs || (echo "ERROR: outputs directory missing" && exit 1)
           test "$(ls -A outputs)" || (echo "ERROR: outputs directory is empty" && exit 1)
 
+      # -------------------------------
+      # Checksum generation + validation
+      # -------------------------------
       - name: Generate checksums
         run: |
           find outputs -type f -print0 | sort -z | xargs -0 sha256sum > checksums.txt
@@ -49,6 +64,9 @@ jobs:
         run: |
           python scripts/verify_checksums.py
 
+      # -------------------------------
+      # Upload reproducibility artifacts
+      # -------------------------------
       - name: Upload paper figures and executed notebook
         uses: actions/upload-artifact@v4
         with:
