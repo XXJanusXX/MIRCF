@@ -21,6 +21,8 @@ continuous integration to validate reproducibility.
 
 ## Repository Structure
 
+Repository Structure
+
 MIRCF/
 ├── README.md
 ├── LICENSE
@@ -61,6 +63,7 @@ MIRCF/
 └── Zenodo/
     ├── RELEASE_CHECKLIST.md
     └── metadata.json
+
 ---
 
 ## Quick Start
