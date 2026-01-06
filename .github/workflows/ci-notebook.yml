@@ -25,9 +25,21 @@ jobs:
         pip install -r requirements.txt
         pip install jupyter nbconvert
 
+    - name: Prepare output directory
+      run: |
+        mkdir -p outputs
+
     - name: Execute MIRCF notebook
       run: |
         jupyter nbconvert \
           --to notebook \
           --execute notebooks/MIRCF_Section6_Reproduction.ipynb \
           --output executed.ipynb
+
+    - name: Upload paper figures and executed notebook
+      uses: actions/upload-artifact@v4
+      with:
+        name: mircf-paper-outputs
+        path: |
+          outputs/
+          executed.ipynb
