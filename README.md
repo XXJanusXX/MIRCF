@@ -21,12 +21,97 @@ continuous integration to validate reproducibility.
 
 ## Repository Structure
 
-notebooks/ # Reproducible experiments (canonical artifact)
-src/ # Optional modular implementation
-paper/ # Paper-facing prose, captions, tables
-outputs/ # Generated figures/tables (not committed)
-reproducibility/ # Reproduction and environment manifests
-.github/ # CI workflow
+MIRCF/
+│
+├── README.md
+│   ├─ Project overview
+│   ├─ CI badge
+│   ├─ Reproduction instructions
+│   ├─ License summary (Non-Commercial)
+│
+├── LICENSE
+│   └─ Creative Commons Attribution-NonCommercial 4.0 International
+│
+├── CITATION.cff
+│   ├─ Author name
+│   ├─ ORCID: 0009-0000-4065-3370
+│   ├─ Affiliation: Rushford Business School, Switzerland
+│   ├─ Paper citation metadata
+│
+├── AUTHOR_CONTRIBUTIONS.md
+│   └─ Formal contribution statement (conceptualization, theory, experiments, writing)
+│
+├── REPRODUCIBILITY_CHECKLIST.md
+│   └─ Reviewer-facing checklist (environment, execution, artifacts, validation)
+│
+├── Makefile
+│   ├─ make reproduce        # full deterministic run
+│   ├─ make checksums        # regenerate checksums.txt
+│   ├─ make clean            # remove outputs/
+│
+├── requirements.txt
+│   └─ numpy
+│      pandas
+│      scipy
+│      matplotlib
+│      nbformat
+│      nbconvert
+│
+├── .python-version
+│   └─ 3.12.12
+│
+├── .pre-commitC
+├── .pre-commit-config.yaml
+│   └─ notebook normalization
+│   └─ nbQA linting
+│   └─ dict-mutation guard
+│
+├── .gitignore
+│   └─ outputs/
+│   └─ __pycache__/
+│   └─ .ipynb_checkpoints/
+│
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       │   ├─ Python 3.12.12
+│       │   ├─ pre-commit enforcement
+│       │   ├─ notebook execution (nbconvert)
+│       │   ├─ checksum verification
+│       │   └─ artifact upload (figures + tables)
+│
+├── scripts/
+│   ├── check_dict_override.py
+│   │   └─ forbids dict(**cfg, key=...)
+│   ├── generate_checksums.py
+│   │   └─ produces checksums.txt
+│   └── verify_checksums.py
+│       └─ CI checksum comparison
+│
+├── notebooks/
+│   └── MIRCF_Section6_Reproduction.ipynb
+│       ├─ RQ1–RQ6 cells (deterministic)
+│       ├─ Table generation cells
+│       ├─ Quantum RQ5-B extension
+│       └─ Paper-numbered outputs
+│
+├── outputs/                # NOT committed (CI artifact)
+│   ├── Fig_6_1_RQ1_Stability.svg
+│   ├── Fig_6_1_RQ1_Stability.jpg
+│   ├── Fig_6_2_RQ2_EDB.svg
+│   ├── Fig_6_3_RQ3_Resonance.svg
+│   ├── Fig_6_4_RQ4_Ablation.svg
+│   ├── Fig_6_5_RQ5_Scaling.svg
+│   ├── Fig_6_6_RQ5_Quantum.svg
+│   ├── Fig_6_7_RQ6_Failure.svg
+│   ├── Fig_6_8_Table_RQ_Metrics.svg
+│   ├── Fig_6_9_Table_DSR_Alignment.svg
+│   └── checksums.txt
+│
+└── Zenodo/
+    ├── RELEASE_CHECKLIST.md
+    └── metadata.json
+
 
 
 ---
