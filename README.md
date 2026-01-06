@@ -23,31 +23,50 @@ continuous integration to validate reproducibility.
 
 MIRCF/
 │
+
 ├── README.md
-│   ├─ Project overview
+
+│   
+
+├─ Project overview
+
 │   ├─ CI badge
+
 │   ├─ Reproduction instructions
+
 │   ├─ License summary (Non-Commercial)
+
 │
 ├── LICENSE
+
 │   └─ Creative Commons Attribution-NonCommercial 4.0 International
 │
 ├── CITATION.cff
+
 │   ├─ Author name
+
 │   ├─ ORCID: 0009-0000-4065-3370
+
 │   ├─ Affiliation: Rushford Business School, Switzerland
+
 │   ├─ Paper citation metadata
+
 │
 ├── AUTHOR_CONTRIBUTIONS.md
 │   └─ Formal contribution statement (conceptualization, theory, experiments, writing)
+
 │
 ├── REPRODUCIBILITY_CHECKLIST.md
 │   └─ Reviewer-facing checklist (environment, execution, artifacts, validation)
+
 │
 ├── Makefile
 │   ├─ make reproduce        # full deterministic run
+
 │   ├─ make checksums        # regenerate checksums.txt
+
 │   ├─ make clean            # remove outputs/
+
 │
 ├── requirements.txt
 │   └─ numpy
@@ -65,11 +84,13 @@ MIRCF/
 │   └─ notebook normalization
 │   └─ nbQA linting
 │   └─ dict-mutation guard
+
 │
 ├── .gitignore
 │   └─ outputs/
 │   └─ __pycache__/
 │   └─ .ipynb_checkpoints/
+
 │
 ├── .github/
 │   └── workflows/
@@ -79,6 +100,7 @@ MIRCF/
 │       │   ├─ notebook execution (nbconvert)
 │       │   ├─ checksum verification
 │       │   └─ artifact upload (figures + tables)
+
 │
 ├── scripts/
 │   ├── check_dict_override.py
