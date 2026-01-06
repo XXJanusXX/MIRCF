@@ -18,9 +18,10 @@ repos:
       - id: normalize-nbformat
         name: Normalize notebook format (cell IDs)
         entry: python -m nbformat --normalize
-        language: system
+        language: python
+        additional_dependencies:
+          - nbformat>=5.9
         files: \.ipynb$
-
   # ------------------------------------------------------------
   # Strip execution noise from notebooks
   # ------------------------------------------------------------
