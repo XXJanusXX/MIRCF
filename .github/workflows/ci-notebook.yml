@@ -35,6 +35,18 @@ jobs:
           --to notebook \
           --execute notebooks/MIRCF_Section6_Reproduction.ipynb \
           --output executed.ipynb
+        - name: Verify outputs exist
+      run: |
+        test -d outputs || (echo "ERROR: outputs directory missing" && exit 1)
+        test "$(ls -A outputs)" || (echo "ERROR: outputs directory is empty" && exit 1)
+
+    - name: Generate checksums
+      run: |
+        find outputs -type f -print0 | sort -z | xargs -0 sha256sum > checksums.txt
+
+    - name: Verify checksums
+      run: |
+        python scripts/verify_checksums.py
 
     - name: Upload paper figures and executed notebook
       uses: actions/upload-artifact@v4
