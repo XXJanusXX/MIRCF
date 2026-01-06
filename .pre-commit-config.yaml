@@ -1,6 +1,6 @@
 repos:
   # --------------------------------------------------
-  # Basic hygiene (YAML, whitespace, EOF)
+  # Basic hygiene
   # --------------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
@@ -12,19 +12,20 @@ repos:
 
   # --------------------------------------------------
   # Normalize Jupyter notebooks (cell IDs, metadata)
-  # Uses custom script (nbformat API, future-proof)
+  # nbformat explicitly installed
   # --------------------------------------------------
   - repo: local
     hooks:
       - id: normalize-nbformat
         name: Normalize notebook format (cell IDs)
         entry: python scripts/normalize_notebooks.py
-        language: system
+        language: python
+        additional_dependencies:
+          - nbformat>=5.9
         files: \.ipynb$
 
   # --------------------------------------------------
-  # Strip outputs from notebooks before commit
-  # (execution happens only in CI)
+  # Strip outputs before commit (execution only in CI)
   # --------------------------------------------------
   - repo: https://github.com/kynan/nbstripout
     rev: 0.7.1
@@ -33,8 +34,8 @@ repos:
         files: \.ipynb$
 
   # --------------------------------------------------
-  # Static analysis on notebooks via nbQA + flake8
-  # Notebook-appropriate relaxations applied
+  # nbQA — SAFETY-ONLY linting for notebooks
+  # (no formatting micro-rules)
   # --------------------------------------------------
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.9.1
@@ -43,12 +44,12 @@ repos:
         additional_dependencies:
           - flake8-bugbear
         args:
+          - --select=F,B,B9
+          - --extend-ignore=F401
           - --max-line-length=120
-          - --extend-ignore=E203,E266,E501
 
   # --------------------------------------------------
   # Custom guard: forbid dict unpack override
-  # Prevents cfg mutation bugs (critical for MIRCF)
   # --------------------------------------------------
   - repo: local
     hooks:
