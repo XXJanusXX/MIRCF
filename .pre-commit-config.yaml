@@ -1,7 +1,7 @@
 repos:
-  # ============================================================
-  # 1. Basic repository hygiene (fast, always safe)
-  # ============================================================
+  # ------------------------------------------------------------
+  # Basic hygiene
+  # ------------------------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -10,13 +10,9 @@ repos:
       - id: trailing-whitespace
       - id: check-added-large-files
 
-  # ============================================================
-  # 2. Notebook normalization (future nbformat strictness)
-  # Ensures:
-  # - Cell IDs exist
-  # - Deterministic diffs
-  # - No nbformat warnings in CI
-  # ============================================================
+  # ------------------------------------------------------------
+  # Normalize notebooks (future nbformat strictness)
+  # ------------------------------------------------------------
   - repo: local
     hooks:
       - id: normalize-nbformat
@@ -25,10 +21,9 @@ repos:
         language: system
         files: \.ipynb$
 
-  # ============================================================
-  # 3. Strip execution noise from notebooks
-  # Keeps outputs intentional and reproducible
-  # ============================================================
+  # ------------------------------------------------------------
+  # Strip execution noise from notebooks
+  # ------------------------------------------------------------
   - repo: https://github.com/kynan/nbstripout
     rev: 0.7.1
     hooks:
@@ -37,25 +32,20 @@ repos:
           - --extra-keys=metadata.kernelspec
           - --extra-keys=metadata.language_info
 
-  # ============================================================
-  # 4. Notebook-aware static analysis (nbQA + flake8)
-  # Catches:
-  # - Undefined variables
-  # - Shadowing
-  # - Silent errors in cells
-  # ============================================================
+  # ------------------------------------------------------------
+  # Notebook-aware linting (research-safe)
+  # ------------------------------------------------------------
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.8.5
     hooks:
       - id: nbqa-flake8
+        args: ["--config=.flake8"]
         additional_dependencies:
           - flake8-bugbear
 
-  # ============================================================
-  # 5. MIRCF-specific safety guard
-  # Forbids dict(**cfg, key=value) mutation pattern
-  # (Root cause of the CI failure you hit)
-  # ============================================================
+  # ------------------------------------------------------------
+  # MIRCF-specific safety guard
+  # ------------------------------------------------------------
   - repo: local
     hooks:
       - id: forbid-dict-unpack-override
