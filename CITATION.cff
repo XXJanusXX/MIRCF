@@ -1,0 +1,175 @@
+cff-version: 1.2.0
+title: "Meta-Intentional Reflexive Cybernetic Framework (MIRCF)"
+message: "If you use this research artifact, please cite the associated publication and foundational references."
+version: 1.0.0
+year: 2026
+license: MIT
+
+authors:
+  - family-names: Siddarth
+    given-names: L.
+
+keywords:
+  - cybernetics
+  - metacognition
+  - design science research
+  - nonlinear dynamics
+  - quantum cognition
+  - multi-agent systems
+  - intrinsic safety
+
+references:
+
+  - type: book
+    title: "An Introduction to Cybernetics"
+    authors:
+      - family-names: Ashby
+        given-names: W. R.
+    year: 1956
+    publisher: "Chapman & Hall"
+
+  - type: article
+    title: "Stochastic Approximations and Differential Inclusions"
+    authors:
+      - family-names: Benaïm
+        given-names: M.
+      - family-names: Hofbauer
+        given-names: J.
+      - family-names: Sorin
+        given-names: S.
+    journal: "SIAM Journal on Control and Optimization"
+    year: 2005
+    volume: 44
+    issue: 1
+    pages: "328–348"
+    doi: "10.1137/S0363012904439301"
+
+  - type: book
+    title: "Quantum Models of Cognition and Decision"
+    authors:
+      - family-names: Busemeyer
+        given-names: J. R.
+      - family-names: Bruza
+        given-names: P. D.
+    year: 2012
+    publisher: "Cambridge University Press"
+    doi: "10.1017/CBO9780511997716"
+
+  - type: book
+    title: "Spectral Graph Theory"
+    authors:
+      - family-names: Chung
+        given-names: F. R.
+    year: 1997
+    series: "CBMS Regional Conference Series in Mathematics"
+    publisher: "American Mathematical Society"
+
+  - type: article
+    title: "Metacognition in computation: A selected research review"
+    authors:
+      - family-names: Cox
+        given-names: M. T.
+    journal: "Artificial Intelligence"
+    year: 2005
+    volume: 169
+    issue: 2
+    pages: "104–141"
+    doi: "10.1016/j.artint.2005.10.009"
+
+  - type: conference-paper
+    title: "MIDCA: A metacognitive, integrated dual-cycle architecture for self-regulated autonomy"
+    authors:
+      - family-names: Cox
+        given-names: M. T.
+      - family-names: Alavi
+        given-names: Z.
+      - family-names: Dannenhauer
+        given-names: D.
+      - family-names: Munoz-Avila
+        given-names: H.
+      - family-names: Perlis
+        given-names: D.
+    year: 2016
+    booktitle: "Proceedings of the AAAI Conference on Artificial Intelligence"
+
+  - type: article
+    title: "Computational Metacognition"
+    authors:
+      - family-names: Cox
+        given-names: M. T.
+      - family-names: Mohammad
+        given-names: Z.
+    year: 2022
+    doi: "10.48550/arXiv.2201.12885"
+
+  - type: article
+    title: "Metacognition and cognitive monitoring"
+    authors:
+      - family-names: Flavell
+        given-names: J. H.
+    journal: "American Psychologist"
+    year: 1979
+    volume: 34
+    issue: 10
+    pages: "906–911"
+    doi: "10.1037/0003-066X.34.10.906"
+
+  - type: book
+    title: "Cybernetics of Cybernetics"
+    authors:
+      - family-names: von Foerster
+        given-names: H.
+    year: 2003
+    publisher: "Springer"
+
+  - type: article
+    title: "The free-energy principle"
+    authors:
+      - family-names: Friston
+        given-names: K.
+    journal: "Nature Reviews Neuroscience"
+    year: 2010
+    doi: "10.1038/nrn2787"
+
+  - type: book
+    title: "Design Science in Information Systems Research"
+    authors:
+      - family-names: Hevner
+        given-names: A. R.
+      - family-names: Ram
+        given-names: S.
+      - family-names: March
+        given-names: S. T.
+    year: 2004
+    journal: "MIS Quarterly"
+
+  - type: book
+    title: "Nonlinear Systems"
+    authors:
+      - family-names: Khalil
+        given-names: H. K.
+    year: 2002
+    edition: "3rd"
+    publisher: "Prentice Hall"
+
+  - type: article
+    title: "Ramanujan Graphs"
+    authors:
+      - family-names: Lubotzky
+        given-names: A.
+      - family-names: Phillips
+        given-names: R. S.
+      - family-names: Sarnak
+        given-names: P. C.
+    journal: "Combinatorica"
+    year: 1988
+    doi: "10.1007/BF02126799"
+
+  - type: book
+    title: "Cybernetics or Control and Communication in the Animal and the Machine"
+    authors:
+      - family-names: Wiener
+        given-names: N.
+    year: 1948
+    publisher: "MIT Press"
+    doi: "10.7551/mitpress/11810.001.0001"
