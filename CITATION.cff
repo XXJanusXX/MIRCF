@@ -6,9 +6,10 @@ year: 2026
 license: MIT
 
 authors:
-  - family-names: Siddarth
-    given-names: L.
-
+  - family-names: Laxminarayanan
+    given-names: Siddarth
+    orcid: https://orcid.org/0009-0000-4065-3370
+    affiliation: "DBA Research Scholar(Data Science), Rushford Business School, Switzerland"
 keywords:
   - cybernetics
   - metacognition
