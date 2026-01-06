@@ -1,28 +1,6 @@
-# MIRCF — Meta-Intentional Reflexive Cybernetic Framework
-
-This repository is the official open research artifact accompanying the MIRCF study.
-It provides a fully reproducible implementation of the experimental results
-reported in Section 6 (RQ1–RQ6).
-
-The artifact follows Design Science Research (DSR) best practices and includes
-continuous integration to validate reproducibility.
-
----
-
-## Contents
-
-- Reproducible Jupyter notebook for RQ1–RQ6
-- Programmatic generation of all figures and tables (SVG + JPG)
-- Quantum-inspired extension (RQ5)
-- Counterfactual safety analysis (RQ6)
-- Continuous Integration (CI) for notebook execution
-
----
-
 ## Repository Structure
 
-Repository Structure
-
+```text
 MIRCF/
 ├── README.md
 ├── LICENSE
@@ -63,6 +41,25 @@ MIRCF/
 └── Zenodo/
     ├── RELEASE_CHECKLIST.md
     └── metadata.json
+```
+# MIRCF — Meta-Intentional Reflexive Cybernetic Framework
+
+This repository is the official open research artifact accompanying the MIRCF study.
+It provides a fully reproducible implementation of the experimental results
+reported in Section 6 (RQ1–RQ6).
+
+The artifact follows Design Science Research (DSR) best practices and includes
+continuous integration to validate reproducibility.
+
+---
+
+## Contents
+
+- Reproducible Jupyter notebook for RQ1–RQ6
+- Programmatic generation of all figures and tables (SVG + JPG)
+- Quantum-inspired extension (RQ5)
+- Counterfactual safety analysis (RQ6)
+- Continuous Integration (CI) for notebook execution
 
 ---
 
