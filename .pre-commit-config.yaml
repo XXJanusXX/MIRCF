@@ -1,7 +1,7 @@
 repos:
-  # ------------------------------------------------------------
-  # Basic hygiene
-  # ------------------------------------------------------------
+  # --------------------------------------------------
+  # Basic hygiene (YAML, whitespace, EOF)
+  # --------------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -10,47 +10,50 @@ repos:
       - id: trailing-whitespace
       - id: check-added-large-files
 
-  # ------------------------------------------------------------
-  # Normalize notebooks (future nbformat strictness)
-  # ------------------------------------------------------------
+  # --------------------------------------------------
+  # Normalize Jupyter notebooks (cell IDs, metadata)
+  # Uses custom script (nbformat API, future-proof)
+  # --------------------------------------------------
   - repo: local
     hooks:
       - id: normalize-nbformat
         name: Normalize notebook format (cell IDs)
-        entry: python -m nbformat --normalize
-        language: python
-        additional_dependencies:
-          - nbformat>=5.9
+        entry: python scripts/normalize_notebooks.py
+        language: system
         files: \.ipynb$
-  # ------------------------------------------------------------
-  # Strip execution noise from notebooks
-  # ------------------------------------------------------------
+
+  # --------------------------------------------------
+  # Strip outputs from notebooks before commit
+  # (execution happens only in CI)
+  # --------------------------------------------------
   - repo: https://github.com/kynan/nbstripout
     rev: 0.7.1
     hooks:
       - id: nbstripout
-        args:
-          - --extra-keys=metadata.kernelspec
-          - --extra-keys=metadata.language_info
+        files: \.ipynb$
 
-  # ------------------------------------------------------------
-  # Notebook-aware linting (research-safe)
-  # ------------------------------------------------------------
+  # --------------------------------------------------
+  # Static analysis on notebooks via nbQA + flake8
+  # Notebook-appropriate relaxations applied
+  # --------------------------------------------------
   - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.8.5
+    rev: 1.9.1
     hooks:
       - id: nbqa-flake8
-        args: ["--config=.flake8"]
         additional_dependencies:
           - flake8-bugbear
+        args:
+          - --max-line-length=120
+          - --extend-ignore=E203,E266,E501
 
-  # ------------------------------------------------------------
-  # MIRCF-specific safety guard
-  # ------------------------------------------------------------
+  # --------------------------------------------------
+  # Custom guard: forbid dict unpack override
+  # Prevents cfg mutation bugs (critical for MIRCF)
+  # --------------------------------------------------
   - repo: local
     hooks:
-      - id: forbid-dict-unpack-override
+      - id: forbid-dict-override
         name: Forbid dict unpack override (cfg mutation)
         entry: python scripts/check_dict_override.py
         language: system
-        files: \.ipynb$
+        files: \.py$|\.ipynb$
