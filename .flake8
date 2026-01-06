@@ -1,10 +1,8 @@
 [flake8]
 max-line-length = 100
-
-# Notebook-appropriate relaxations
 extend-ignore =
-    E231,  # missing whitespace (common in math-heavy code)
-    E228,  # modulo spacing (acceptable in compact expressions)
-    E702,  # multiple statements on one line (used intentionally)
-    E401,  # multiple imports on one line
-    F401   # imported but unused (used across cells)
+    E231,
+    E228,
+    E702,
+    E401,
+    F401
