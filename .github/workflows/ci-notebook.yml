@@ -11,47 +11,49 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12.12"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.12"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install jupyter nbconvert
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install jupyter nbconvert
 
-    - name: Prepare output directory
-      run: |
-        mkdir -p outputs
+      - name: Prepare output directory
+        run: |
+          mkdir -p outputs
 
-    - name: Execute MIRCF notebook
-      run: |
-        jupyter nbconvert \
-          --to notebook \
-          --execute notebooks/MIRCF_Section6_Reproduction.ipynb \
-          --output executed.ipynb
-        - name: Verify outputs exist
-      run: |
-        test -d outputs || (echo "ERROR: outputs directory missing" && exit 1)
-        test "$(ls -A outputs)" || (echo "ERROR: outputs directory is empty" && exit 1)
+      - name: Execute MIRCF notebook
+        run: |
+          jupyter nbconvert \
+            --to notebook \
+            --execute notebooks/MIRCF_Section6_Reproduction.ipynb \
+            --output notebooks/executed.ipynb
 
-    - name: Generate checksums
-      run: |
-        find outputs -type f -print0 | sort -z | xargs -0 sha256sum > checksums.txt
+      - name: Verify outputs exist
+        run: |
+          test -d outputs || (echo "ERROR: outputs directory missing" && exit 1)
+          test "$(ls -A outputs)" || (echo "ERROR: outputs directory is empty" && exit 1)
 
-    - name: Verify checksums
-      run: |
-        python scripts/verify_checksums.py
+      - name: Generate checksums
+        run: |
+          find outputs -type f -print0 | sort -z | xargs -0 sha256sum > checksums.txt
 
-    - name: Upload paper figures and executed notebook
-      uses: actions/upload-artifact@v4
-      with:
-        name: mircf-paper-outputs
-        path: |
-          outputs/
-          executed.ipynb
+      - name: Verify checksums
+        run: |
+          python scripts/verify_checksums.py
+
+      - name: Upload paper figures and executed notebook
+        uses: actions/upload-artifact@v4
+        with:
+          name: mircf-paper-outputs
+          path: |
+            outputs/**
+            notebooks/executed.ipynb
+            checksums.txt
