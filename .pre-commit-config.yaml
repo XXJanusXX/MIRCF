@@ -1,7 +1,7 @@
 repos:
-  # -----------------------------
-  # Basic hygiene (always safe)
-  # -----------------------------
+  # ============================================================
+  # 1. Basic repository hygiene (fast, always safe)
+  # ============================================================
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -10,9 +10,40 @@ repos:
       - id: trailing-whitespace
       - id: check-added-large-files
 
-  # -----------------------------
-  # Notebook-aware linting
-  # -----------------------------
+  # ============================================================
+  # 2. Notebook normalization (future nbformat strictness)
+  # Ensures:
+  # - Cell IDs exist
+  # - Deterministic diffs
+  # - No nbformat warnings in CI
+  # ============================================================
+  - repo: local
+    hooks:
+      - id: normalize-nbformat
+        name: Normalize notebook format (cell IDs)
+        entry: python -m nbformat --normalize
+        language: system
+        files: \.ipynb$
+
+  # ============================================================
+  # 3. Strip execution noise from notebooks
+  # Keeps outputs intentional and reproducible
+  # ============================================================
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+        args:
+          - --extra-keys=metadata.kernelspec
+          - --extra-keys=metadata.language_info
+
+  # ============================================================
+  # 4. Notebook-aware static analysis (nbQA + flake8)
+  # Catches:
+  # - Undefined variables
+  # - Shadowing
+  # - Silent errors in cells
+  # ============================================================
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.8.5
     hooks:
@@ -20,10 +51,11 @@ repos:
         additional_dependencies:
           - flake8-bugbear
 
-  # -----------------------------
-  # MIRCF-specific safety guard
-  # Prevents dict(**cfg, key=...)
-  # -----------------------------
+  # ============================================================
+  # 5. MIRCF-specific safety guard
+  # Forbids dict(**cfg, key=value) mutation pattern
+  # (Root cause of the CI failure you hit)
+  # ============================================================
   - repo: local
     hooks:
       - id: forbid-dict-unpack-override
