@@ -52,6 +52,17 @@ All figures and tables generated programmatically
 
 Notebook execution validated on every commit via GitHub Actions
 
+Author Contribution Statement
+
+Siddarth L. conceived and designed the Meta-Intentional Reflexive Cybernetic Framework (MIRCF). The author developed the theoretical framework, formulated the research questions, and defined the intrinsic stability, reflexive coherence, entropy regulation, resonance, scalability, and safety metrics used in the study.
+
+The author implemented the complete computational models, simulation environment, and quantum-inspired extension, and conducted all experiments reported in the manuscript. All empirical analyses, ablation studies, scalability evaluations, counterfactual safety tests, and figure and table generation were performed by the author.
+
+The author wrote the manuscript, including the conceptual framework, methodology, results, discussion, and conclusions, and prepared all figures, tables, and supplementary materials. The author also designed, implemented, and validated the full reproducibility artifact, including the deterministic Jupyter notebook, continuous integration workflow, and open research metadata.
+
+The author approved the final version of the manuscript and is solely responsible for the integrity, accuracy, and reproducibility of the work.
+
+
 License
 
 MIT License. See LICENSE.
